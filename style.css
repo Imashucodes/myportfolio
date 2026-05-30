@@ -298,6 +298,7 @@ h2 {
   display: flex;
   flex-direction: column;
   transition: var(--transition-premium);
+  position: relative;
 }
 
 .project-card:hover {
@@ -307,20 +308,44 @@ h2 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Container to strictly hold images/posters over the video frame layout */
+.project-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0b0b0d; /* Subtle warm grey baseline texture */
+}
+
 .project-video {
   width: 100%;
-   height : 100%
-  aspect-ratio: 16 / 9;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  background-color: #000000;
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  z-index: 1;
 }
 
-.project-card:hover .project-video {
-  transform: scale(1.02);
+/* Optional Class if you choose to use an <img> tag inside your project media wrapper */
+.project-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+/* Smooth zoom transition when user interacts with project items */
+.project-card:hover .project-video,
+.project-card:hover .project-poster {
+  transform: scale(1.04);
   opacity: 0.95;
 }
 
@@ -329,6 +354,8 @@ h2 {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  position: relative;
+  z-index: 3;
 }
 
 .project-info span {

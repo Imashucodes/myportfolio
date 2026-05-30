@@ -309,6 +309,7 @@ h2 {
 
 .project-video {
   width: 100%;
+   height : 100%
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center;

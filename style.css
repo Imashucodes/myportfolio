@@ -1,54 +1,66 @@
 /* ==========================================================================
-   1. VARIABLES & RESET
+   1. GLOBAL RESET & BASE STYLES (Applies to the entire website)
    ========================================================================== */
-:root {
-  --bg-dark: #0a0a0a;
-  --bg-card: #121212;
-  --bg-card-hover: #1a1a1a;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
-  --accent: #ffffff;
-  --accent-rgb: 255, 255, 255;
-  --max-width: 1200px;
-  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+:root {
+  --bg-dark: #08080a;
+  --bg-card: #121214;
+  --bg-card-hover: #18181c;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-glow: rgba(255, 255, 255, 0.03);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
   background-color: var(--bg-dark);
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
-  letter-spacing: -0.01em;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 
-/* Common UI Elements */
+/* Reusable Global Layout Containers */
+section {
+  width: 100%;
+  padding: 140px 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-color);
+}
+
 .section-tag {
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  display: block;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.2;
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
-   2. NAVBAR
+   2. FIXED NAVIGATION BAR
    ========================================================================== */
 .navbar {
   position: fixed;
@@ -59,23 +71,25 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 24px 8%;
-  background: rgba(10, 10, 10, 0.75);
+  background: rgba(8, 8, 10, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
+  box-sizing: border-box;
 }
 
 .logo {
   font-weight: 800;
   font-size: 1.1rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 40px;
 }
 
 .nav-links a {
@@ -83,7 +97,7 @@ h2 {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: var(--transition);
+  transition: var(--transition-smooth);
 }
 
 .nav-links a:hover {
@@ -92,14 +106,16 @@ h2 {
 
 .nav-links button {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-primary);
-  padding: 8px 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 2px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition-smooth);
 }
 
 .nav-links button:hover {
@@ -109,26 +125,23 @@ h2 {
 }
 
 /* ==========================================================================
-   3. HERO SECTION
+   3. HERO HEADER (Cinema Atmosphere)
    ========================================================================== */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 8%;
-  padding-top: 100px;
-  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Subtle, high-end organic gradient background */
 .hero-gradient {
   position: absolute;
   top: -10%;
-  right: -10%;
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 70%);
+  right: -5%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, rgba(0, 0, 0, 0) 70%);
   z-index: 1;
   pointer-events: none;
 }
@@ -136,49 +149,47 @@ h2 {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  max-width: 800px;
 }
 
 .hero-tag {
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: clamp(3rem, 6.5vw, 5rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.04em;
-  margin-bottom: 24px;
-  color: var(--text-primary);
+  margin-bottom: 28px;
 }
 
 .hero-desc {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 540px;
+  margin-bottom: 44px;
+  max-width: 580px;
 }
 
 .hero-buttons {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
 }
 
 .primary-btn, .secondary-btn {
-  padding: 14px 28px;
-  font-size: 0.95rem;
+  padding: 16px 32px;
+  font-size: 0.9rem;
   font-weight: 600;
-  border-radius: 4px;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
-  transition: var(--transition);
+  transition: var(--transition-smooth);
 }
 
 .primary-btn {
@@ -199,31 +210,57 @@ h2 {
 }
 
 .secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* ==========================================================================
    4. ABOUT SECTION
    ========================================================================== */
 .about {
-  padding: 120px 8%;
-  max-width: var(--max-width);
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 64px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: start;
 }
 
 .about-left h2 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  max-width: 500px;
 }
 
 .about-right {
   display: flex;
   flex-direction: column;
+  gap: 28px;
+  height: 100%;
   justify-content: center;
-  gap:
+}
+
+.about-right p {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   5. PROJECTS SHOWCASE GRID (Guaranteed Layout Protection)
+   ========================================================================== */
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-heading {
+  margin-bottom: 64px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
+  width: 100%;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);

@@ -3,14 +3,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: San Francisco, sans-serif;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #000;
+  background: black;
   color: white;
   overflow-x: hidden;
 }
+
+/* HERO */
 
 .hero {
   height: 100vh;
@@ -18,33 +24,60 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: radial-gradient(circle, #111, #000);
+  position: relative;
   padding: 20px;
+  overflow: hidden;
 }
 
-.hero-content h1 {
-  font-size: 70px;
-  margin-bottom: 20px;
+.hero-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+  filter: blur(80px);
 }
 
-.hero-content p {
-  color: 
-;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s ease;
+}
+
+.tag {
+  color: #888;
+  letter-spacing: 4px;
   margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.hero h1 {
+  font-size: 90px;
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.desc {
+  color: #aaa;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 40px;
+  font-size: 18px;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .btn {
-  padding: 14px 30px;
-  border-radius: 12px;
-  text-decoration: none;
+  padding: 15px 34px;
+  border-radius: 14px;
   font-weight: bold;
-  transition: 0.3s;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 .white {
@@ -53,65 +86,171 @@ body {
 }
 
 .dark {
+  background: transparent;
   border: 1px solid #444;
   color: white;
 }
 
+.btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(255,255,255,0.15);
+}
+
+/* PROJECTS */
+
 .projects {
-  padding: 100px 40px;
+  padding: 120px 40px;
 }
 
 .projects h2 {
   text-align: center;
-  font-size: 50px;
-  margin-bottom: 50px;
+  font-size: 60px;
+  margin-bottom: 70px;
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 35px;
 }
 
 .project-card {
   background: #111;
-  border-radius: 24px;
+  border-radius: 28px;
   overflow: hidden;
-  transition: 0.4s;
   border: 1px solid #222;
+  transition: 0.4s;
 }
 
 .project-card:hover {
   transform: translateY(-10px);
+  border-color: #555;
 }
 
 .project-video {
   width: 100%;
-  height: 1080px;
+  height: 550px;
   object-fit: cover;
+  display: block;
+  cursor: pointer;
+  background: black;
 }
 
 .project-content {
-  padding: 25px;
+  padding: 28px;
 }
 
 .project-content span {
   color: gray;
+  font-size: 14px;
 }
 
 .project-content h3 {
-  font-size: 28px;
-  margin: 12px 0;
+  font-size: 32px;
+  margin: 15px 0;
 }
 
 .project-content p {
   color: #aaa;
+  line-height: 1.6;
 }
+
+/* POPUP */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+}
+
+.popup-content {
+  width: 90%;
+  max-width: 420px;
+  background: #111;
+  padding: 45px;
+  border-radius: 24px;
+  border: 1px solid #333;
+  text-align: center;
+}
+
+.popup-content h2 {
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+.popup-content p {
+  color: #aaa;
+  margin: 14px 0;
+}
+
+.close-btn {
+  float: right;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+/* FOOTER */
 
 footer {
   text-align: center;
-  padding: 40px;
+  padding: 50px 20px;
   border-top: 1px solid #222;
   color: gray;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .desc {
+    font-size: 16px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projects {
+    padding: 80px 20px;
+  }
+
+  .projects h2 {
+    font-size: 42px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-video {
+    height: 420px;
+  }
+
 }
 ```

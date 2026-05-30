@@ -501,10 +501,10 @@ footer p {
      ========================================================================== */
   .project-video {
     /* OPTION A: Change aspect ratio for mobile (9/16 for vertical reels, or 4/3 for taller boxes) */
-    aspect-ratio: 16 / 10; 
+    aspect-ratio: 16 / 9; 
     
     /* OPTION B: Force a specific maximum height if they look too large on mobile screen sizes */
-    max-height: 220px; 
+    max-height: 1080px; 
     
     object-fit: cover; /* Keeps footage from looking dumb/stretched */
   }

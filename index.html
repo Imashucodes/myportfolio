@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ansh Visuals</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <h1>ANSH VISUALS</h1>
+    <p>Loading Cinematic Experience</p>
+  </div>
+
+  <!-- Contact Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-box">
+      <span class="close" onclick="closePopup()">×</span>
+
+      <h2>Contact Details</h2>
+
+      <div class="contact-card">
+        <h3>Instagram</h3>
+        <p>@wannabe.4shhu</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p>anshsj64@gmail.com</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Phone</h3>
+        <p>9682005542</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <p class="tag">3D VIDEO EDITOR & MOTION DESIGNER</p>
+
+      <h1>
+        Creating Cinematic<br />
+        Visual Experiences
+      </h1>
+
+      <p class="desc">
+        High-energy edits, cinematic storytelling, and luxury visuals.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn white">View Projects</a>
+        <button class="btn dark" onclick="openPopup()">
+          Contact Me
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <h2>Featured Projects</h2>
+
+    <div class="project-grid">
+
+      <div class="project-card">
+        <video src="videos/davin.mp4" muted loop></video>
+
+        <div class="project-content">
+          <span>Luxury Documentary</span>
+          <h3>Davin Jatho Documentary</h3>
+          <p>
+            Luxury cinematic documentary edit with premium storytelling.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <video src="videos/try.mp4" muted loop></video>
+
+        <div class="project-content">
+          <span>Car Edit • VFX</span>
+          <h3>Speed Ramp Car Edit</h3>
+          <p>
+            High-energy car edit with cinematic transitions.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <video src="videos/vk.mp4" muted loop></video>
+
+        <div class="project-content">
+          <span>Social Media Reel</span>
+          <h3>Agency Promotion Reel</h3>
+          <p>
+            Retention-focused reel optimized for engagement.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Cinematic Portfolio Experience</p>
+    <p>© 2026 Ansh Visuals</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

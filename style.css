@@ -215,6 +215,32 @@ h2 {
 }
 
 /* ==========================================================================
+   PROJECT VIDEO OPTIMIZATION
+   ========================================================================== */
+
+.project-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* Locks the layout box into a perfect widescreen cinema ratio */
+  object-fit: cover;         /* Crucial: Crops and fills the frame cleanly without squishing the footage */
+  object-position: center;   /* Keeps the focus of your video directly in the center */
+  background-color: #000000; /* Dark baseline backdrop while the file finishes loading */
+  cursor: pointer;
+  
+  /* Smooth hardware-accelerated transitions for hover actions */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.4s ease, 
+              opacity 0.4s ease;
+  
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Premium Cinematic Interaction Effect on Card Hover */
+.project-card:hover .project-video {
+  transform: scale(1.02);     /* Ultra-subtle elegant zoom, typical of luxury portfolio templates */
+  opacity: 0.95;             /* Gives a soft light-dimming cinematic focus change */
+}
+
+/* ==========================================================================
    4. ABOUT SECTION
    ========================================================================== */
 .about {

@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,40 +9,71 @@
   <title>Ansh Visuals</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
 </head>
 
 <body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      ANSH VISUALS
+    </div>
+
+    <div class="nav-links">
+
+      <a href="#about">About</a>
+
+      <a href="#projects">Projects</a>
+
+      <a href="#services">Services</a>
+
+      <button onclick="openPopup()">
+        Contact
+      </button>
+
+    </div>
+
+  </nav>
 
   <!-- HERO -->
 
   <section class="hero">
 
-    <div class="gradient-bg"></div>
+    <div class="hero-gradient"></div>
 
     <div class="hero-content">
 
-      <p class="tag">
-        VIDEO EDITOR • MOTION DESIGNER • VISUAL STORYTELLER
+      <p class="hero-tag">
+        CINEMATIC VIDEO EDITOR • MOTION DESIGNER
       </p>
 
       <h1>
-        Crafting Luxury<br>
-        Cinematic Experiences
+        Luxury Motion<br>
+        & Cinematic<br>
+        Storytelling
       </h1>
 
-      <p class="desc">
-        I create cinematic visuals, premium motion graphics, dark luxury edits,
-        social media reels, and storytelling-focused content designed to feel
-        immersive, emotional, and unforgettable.
+      <p class="hero-desc">
+        Creating premium cinematic visuals, editorial motion graphics,
+        luxury reels and immersive visual experiences designed
+        to emotionally engage audiences.
       </p>
 
-      <div class="buttons">
+      <div class="hero-buttons">
 
-        <a href="#projects" class="btn white">
-          Explore Work
+        <a href="#projects" class="primary-btn">
+          Explore Projects
         </a>
 
-        <button class="btn dark" onclick="openPopup()">
+        <button class="secondary-btn" onclick="openPopup()">
           Contact Me
         </button>
 
@@ -53,7 +85,7 @@
 
   <!-- ABOUT -->
 
-  <section class="about">
+  <section id="about" class="about">
 
     <div class="about-left">
 
@@ -62,7 +94,7 @@
       </p>
 
       <h2>
-        Cinematic editing with emotion, movement and luxury aesthetics.
+        Editorial visuals with cinematic emotion and luxury aesthetics.
       </h2>
 
     </div>
@@ -70,15 +102,13 @@
     <div class="about-right">
 
       <p>
-        My editing style blends cinematic storytelling, aggressive pacing,
-        premium visuals, sound design, velocity transitions and emotional
-        composition to create content that feels modern, immersive and highly
-        engaging.
+        My work combines cinematic storytelling, premium motion graphics,
+        aggressive pacing, emotional editing and dark luxury aesthetics
+        to create visually immersive experiences.
       </p>
 
       <p>
-        From luxury documentaries to social media reels and cinematic car edits,
-        every frame is designed to hold attention and leave a lasting impact.
+        Every frame is crafted to feel premium, modern and emotionally engaging.
       </p>
 
     </div>
@@ -89,7 +119,7 @@
 
   <section id="projects" class="projects">
 
-    <div class="project-header">
+    <div class="projects-heading">
 
       <p class="section-tag">
         SELECTED WORK
@@ -103,7 +133,7 @@
 
     <div class="project-grid">
 
-      <!-- PROJECT 1 -->
+      <!-- PROJECT -->
 
       <div class="project-card">
 
@@ -117,22 +147,21 @@
           <source src="videos/davin.mp4" type="video/mp4">
         </video>
 
-        <div class="project-content">
+        <div class="project-info">
 
           <span>Luxury Documentary</span>
 
           <h3>Davin Jatho Documentary</h3>
 
           <p>
-            Premium cinematic storytelling focused on luxury visuals,
-            emotional pacing and dark editorial aesthetics.
+            Cinematic storytelling with luxury visuals and premium editorial pacing.
           </p>
 
         </div>
 
       </div>
 
-      <!-- PROJECT 2 -->
+      <!-- PROJECT -->
 
       <div class="project-card">
 
@@ -146,22 +175,21 @@
           <source src="videos/try.mp4" type="video/mp4">
         </video>
 
-        <div class="project-content">
+        <div class="project-info">
 
-          <span>Car Edit • Velocity • VFX</span>
+          <span>Velocity Car Edit</span>
 
-          <h3>Speed Ramp Car Edit</h3>
+          <h3>Luxury Automotive Visuals</h3>
 
           <p>
-            Fast-paced cinematic edit featuring aggressive transitions,
-            speed ramps and luxury automotive visuals.
+            Fast-paced cinematic editing with motion graphics and transitions.
           </p>
 
         </div>
 
       </div>
 
-      <!-- PROJECT 3 -->
+      <!-- PROJECT -->
 
       <div class="project-card">
 
@@ -175,15 +203,14 @@
           <source src="videos/vk.mp4" type="video/mp4">
         </video>
 
-        <div class="project-content">
+        <div class="project-info">
 
-          <span>Social Media Reel</span>
+          <span>Agency Reel</span>
 
-          <h3>Agency Promotion Reel</h3>
+          <h3>Modern Social Media Reel</h3>
 
           <p>
-            High-retention social media reel designed with smooth pacing,
-            clean motion graphics and modern branding.
+            High-retention reel optimized with smooth transitions and clean branding.
           </p>
 
         </div>
@@ -194,9 +221,61 @@
 
   </section>
 
+  <!-- SERVICES -->
+
+  <section id="services" class="services">
+
+    <div class="services-heading">
+
+      <p class="section-tag">
+        SERVICES
+      </p>
+
+      <h2>
+        Creative Services
+      </h2>
+
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+
+        <h3>Cinematic Editing</h3>
+
+        <p>
+          Premium cinematic edits with storytelling focused visuals.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <h3>Motion Graphics</h3>
+
+        <p>
+          Modern animated motion graphics and visual compositions.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <h3>Luxury Reels</h3>
+
+        <p>
+          High-retention social media reels designed for engagement.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
   <!-- CONTACT POPUP -->
 
-  <div id="contactPopup" class="popup">
+  <div id="popup" class="popup">
 
     <div class="popup-content">
 
@@ -204,13 +283,15 @@
         ×
       </span>
 
-      <h2>Contact Me</h2>
+      <h2>
+        Contact Me
+      </h2>
 
       <p>@wannabe.4shhu</p>
 
       <p>anshsj64@gmail.com</p>
 
-      <p>+91 9682005542</p>
+      <p>9682005542</p>
 
     </div>
 
@@ -221,7 +302,7 @@
   <footer>
 
     <p>
-      Designed & Edited by Ashhu Edits
+      Designed & Edited by Ansh Visuals
     </p>
 
   </footer>
@@ -230,29 +311,35 @@
 
   <script>
 
-    function toggleVideo(video) {
+    function toggleVideo(video){
 
-      const allVideos = document.querySelectorAll(".project-video");
+      const allVideos =
+      document.querySelectorAll(".project-video");
 
-      allVideos.forEach((v) => {
-        if (v !== video) {
+      allVideos.forEach((v)=>{
+
+        if(v !== video){
           v.pause();
         }
+
       });
 
-      if (video.paused) {
+      if(video.paused){
         video.play();
-      } else {
+      }
+
+      else{
         video.pause();
       }
+
     }
 
-    function openPopup() {
-      document.getElementById("contactPopup").style.display = "flex";
+    function openPopup(){
+      document.getElementById("popup").style.display = "flex";
     }
 
-    function closePopup() {
-      document.getElementById("contactPopup").style.display = "none";
+    function closePopup(){
+      document.getElementById("popup").style.display = "none";
     }
 
   </script>
@@ -260,3 +347,4 @@
 </body>
 
 </html>
+```

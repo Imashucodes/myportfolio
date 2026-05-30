@@ -85,4 +85,111 @@ section {
 }
 
 .section-tag {
-  font
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   2. FIXED NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 8%;
+  background: rgba(7, 7, 8, 0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.25em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition-premium);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-premium);
+}
+
+.nav-links button:hover {
+  background: var(--text-primary);
+  color: var(--bg-dark);
+  border-color: var(--text-primary);
+}
+
+/* ==========================================================================
+   3. HERO DISPLAY
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-gradient {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-tag {
+  font-

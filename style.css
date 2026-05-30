@@ -482,7 +482,36 @@ footer p {
   body::before, body::after { width: 70vw; height: 70vw; } /* Scales ambient colors for tablets */
 }
 
+
 @media (max-width: 768px) {
-  .nav-links a { display: none; }
-  .hero h1 { font-size: 3rem; }
+  .nav-links a { 
+    display: none; 
+  }
+  
+  .hero h1 { 
+    font-size: 3rem; 
+  }
+
+  /* ==========================================================================
+     MOBILE PROJECTS HEIGHT CONTROLS
+     ========================================================================== */
+  .project-video {
+    /* OPTION A: Change aspect ratio for mobile (9/16 for vertical reels, or 4/3 for taller boxes) */
+    aspect-ratio: 16 / 10; 
+    
+    /* OPTION B: Force a specific maximum height if they look too large on mobile screen sizes */
+    max-height: 220px; 
+    
+    object-fit: cover; /* Keeps footage from looking dumb/stretched */
+  }
+  
+  .project-card {
+    /* Optional: Reduces spacing inside the card on small screens */
+    margin-bottom: 12px; 
+  }
+  
+  .project-info {
+    /* Compact padding for phone screens so text fits cleanly */
+    padding: 20px; 
+  }
 }

@@ -1,293 +1,193 @@
-```css
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
-}
+```css id="a9v7de"
+/* PREMIUM BACKGROUND */
 
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#050505;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* HERO */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  padding:40px 20px;
-  overflow:hidden;
-}
-
-.gradient-bg{
-  position:absolute;
-  width:900px;
-  height:900px;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
   background:
-  radial-gradient(circle at top,
-  rgba(125,125,255,0.15),
-  transparent 40%),
-  radial-gradient(circle at bottom,
+  radial-gradient(circle at top left,
+  rgba(120,120,255,0.12),
+  transparent 30%),
+
+  radial-gradient(circle at bottom right,
   rgba(255,255,255,0.08),
+  transparent 30%),
+
+  radial-gradient(circle at center,
+  rgba(120,120,120,0.08),
   transparent 40%);
+  
   filter:blur(80px);
+  z-index:-2;
+  animation:bgMove 10s infinite alternate ease-in-out;
 }
+
+/* HERO MOTION */
 
 .hero-content{
-  position:relative;
-  z-index:2;
-  max-width:1100px;
+  animation:heroReveal 1.4s ease;
 }
 
-.tag{
-  color:#8f8f8f;
-  letter-spacing:5px;
-  font-size:13px;
-  margin-bottom:30px;
-}
+/* TITLE ANIMATION */
 
 .hero h1{
-  font-size:110px;
-  line-height:0.95;
-  margin-bottom:35px;
-  font-weight:700;
+  animation:textFloat 4s ease-in-out infinite;
 }
 
-.desc{
-  max-width:720px;
-  margin:auto;
-  color:#a1a1a1;
-  font-size:19px;
-  line-height:1.8;
-  margin-bottom:45px;
-}
-
-/* BUTTONS */
-
-.buttons{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
+/* BUTTON ANIMATION */
 
 .btn{
-  padding:16px 36px;
-  border-radius:60px;
-  text-decoration:none;
-  border:none;
-  font-size:15px;
-  font-weight:600;
-  transition:0.4s;
-  cursor:pointer;
+  position:relative;
+  overflow:hidden;
 }
 
-.white{
-  background:white;
-  color:black;
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+
+  transition:0.7s;
 }
 
-.dark{
-  background:transparent;
-  border:1px solid #333;
-  color:white;
+.btn:hover::before{
+  left:120%;
 }
 
-.btn:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 30px rgba(255,255,255,0.12);
-}
-
-/* ABOUT */
-
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  padding:140px 8%;
-  align-items:center;
-}
-
-.section-tag{
-  color:#7e7e7e;
-  letter-spacing:4px;
-  margin-bottom:25px;
-  font-size:13px;
-}
-
-.about h2{
-  font-size:65px;
-  line-height:1.1;
-}
-
-.about-right p{
-  color:#a0a0a0;
-  line-height:1.9;
-  font-size:18px;
-  margin-bottom:25px;
-}
-
-/* PROJECTS */
-
-.projects{
-  padding:140px 6%;
-}
-
-.project-header{
-  text-align:center;
-  margin-bottom:90px;
-}
-
-.project-header h2{
-  font-size:90px;
-}
-
-.project-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-  gap:40px;
-}
+/* PROJECT CARD MOTION */
 
 .project-card{
-  background:#0f0f0f;
-  border-radius:30px;
-  overflow:hidden;
-  border:1px solid #1e1e1e;
+  position:relative;
+}
+
+.project-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(255,255,255,0.03)
+  );
+
+  opacity:0;
   transition:0.5s;
 }
 
-.project-card:hover{
-  transform:translateY(-12px);
-  border-color:#444;
+.project-card:hover::before{
+  opacity:1;
 }
+
+.project-card:hover{
+  transform:
+  translateY(-14px)
+  scale(1.01);
+  
+  box-shadow:
+  0 25px 60px rgba(0,0,0,0.5);
+}
+
+/* VIDEO MOTION */
 
 .project-video{
-  width:100%;
-  height:720px;
-  object-fit:cover;
-  display:block;
-  background:black;
-  cursor:pointer;
+  transition:0.6s;
 }
 
-.project-content{
-  padding:30px;
+.project-card:hover .project-video{
+  transform:scale(1.03);
 }
 
+/* TEXT FADE */
+
+.project-content h3,
+.project-content p,
 .project-content span{
-  color:#7e7e7e;
-  font-size:14px;
+  animation:fadeUp 1s ease;
 }
 
-.project-content h3{
-  font-size:38px;
-  margin:18px 0;
-}
-
-.project-content p{
-  color:#9f9f9f;
-  line-height:1.8;
-  font-size:16px;
-}
-
-/* POPUP */
-
-.popup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  backdrop-filter:blur(10px);
-  z-index:999;
-}
+/* POPUP MOTION */
 
 .popup-content{
-  width:90%;
-  max-width:420px;
-  background:#111;
-  border:1px solid #333;
-  padding:45px;
-  border-radius:30px;
-  text-align:center;
+  animation:popupShow 0.5s ease;
 }
 
-.popup-content h2{
-  font-size:42px;
-  margin-bottom:25px;
+/* KEYFRAMES */
+
+@keyframes heroReveal{
+
+  from{
+    opacity:0;
+    transform:translateY(80px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
 }
 
-.popup-content p{
-  color:#aaa;
-  margin:14px 0;
+@keyframes textFloat{
+
+  0%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-8px);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
+
 }
 
-.close-btn{
-  float:right;
-  font-size:32px;
-  cursor:pointer;
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
 }
 
-/* FOOTER */
+@keyframes popupShow{
 
-footer{
-  padding:60px 20px;
-  text-align:center;
-  border-top:1px solid #1c1c1c;
-  color:#666;
+  from{
+    opacity:0;
+    transform:scale(0.8);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+
 }
 
-/* MOBILE */
+@keyframes bgMove{
 
-@media(max-width:768px){
-
-  .hero h1{
-    font-size:56px;
+  from{
+    transform:translateY(-40px) translateX(-20px);
   }
 
-  .desc{
-    font-size:16px;
-  }
-
-  .buttons{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .about{
-    grid-template-columns:1fr;
-    padding:100px 25px;
-  }
-
-  .about h2{
-    font-size:42px;
-  }
-
-  .project-header h2{
-    font-size:52px;
-  }
-
-  .project-grid{
-    grid-template-columns:1fr;
-  }
-
-  .project-video{
-    height:500px;
-  }
-
-  .project-content h3{
-    font-size:28px;
+  to{
+    transform:translateY(40px) translateX(20px);
   }
 
 }

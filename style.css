@@ -520,7 +520,7 @@ footer p {
   /* 3. HARD LOCK THE VIDEO HEIGHT (Change these values to match your exact taste!) */
   .project-video {
     /* 👇 THIS IS EXACTLY WHAT YOU NEED TO TWEAK 👇 */
-    height: 180px !important;            /* FORCED SPECIFIC HEIGHT: Instantly forces video to shrink */
+    height: 1080px !important;            /* FORCED SPECIFIC HEIGHT: Instantly forces video to shrink */
     aspect-ratio: auto !important;        /* Clears the standard widescreen lock */
     object-fit: cover !important;         /* Essential: keeps cinematic framing completely perfect */
   }

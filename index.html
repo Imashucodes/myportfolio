@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,59 +10,32 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
-  
+
 <body>
 
-  <!-- CONTACT POPUP -->
-<div id="contactPopup" class="popup">
+  <!-- HERO -->
 
-  <div class="popup-content">
-
-    <span class="close-btn" onclick="closePopup()">
-      ×
-    </span>
-
-    <h2>Contact Me</h2>
-
-    <p>Instagram: @wannabe.4shhu</p>
-
-    <p>Email: anshsj64@gmail.com</p>
-
-    <p>Phone: 9682005542</p>
-
-  </div>
-
-</div>
-
-<script>
-function openPopup() {
-  document.getElementById("contactPopup").style.display = "flex";
-}
-
-function closePopup() {
-  document.getElementById("contactPopup").style.display = "none";
-}
-</script>
-
-  <!-- Hero Section -->
   <section class="hero">
+
+    <div class="hero-glow"></div>
 
     <div class="hero-content">
 
       <p class="tag">
-        3D VIDEO EDITOR & MOTION DESIGNER
+        3D VIDEO EDITOR • MOTION DESIGNER
       </p>
 
       <h1>
-        Creating Cinematic<br />
+        Creating Cinematic<br>
         Visual Experiences
       </h1>
 
       <p class="desc">
-        High-energy edits, cinematic storytelling, and luxury visuals.
+        High-energy edits, cinematic storytelling, luxury visuals and premium motion graphics.
       </p>
 
       <div class="buttons">
+
         <a href="#projects" class="btn white">
           View Projects
         </a>
@@ -69,126 +43,173 @@ function closePopup() {
         <button class="btn dark" onclick="openPopup()">
           Contact Me
         </button>
+
       </div>
 
     </div>
 
   </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="projects">
+  <!-- PROJECTS -->
 
-  <h2>Featured Projects</h2>
+  <section id="projects" class="projects">
 
-  <div class="project-grid">
+    <h2>Featured Projects</h2>
 
-    <!-- Project 1 -->
-    <div class="project-card">
+    <div class="project-grid">
 
-      <video
-        class="project-video"
-        muted
-        loop
-        playsinline
-        poster="https://picsum.photos/500/700?1"
-        onclick="toggleVideo(this)"
-      >
-        <source src="videos/davin.mp4" type="video/mp4">
-      </video>
+      <!-- PROJECT 1 -->
 
-      <div class="project-content">
-        <span>Luxury Documentary</span>
+      <div class="project-card">
 
-        <h3>Davin Jatho Documentary</h3>
+        <video
+          class="project-video"
+          muted
+          loop
+          playsinline
+          onclick="toggleVideo(this)"
+        >
+          <source src="videos/davin.mp4" type="video/mp4">
+        </video>
 
-        <p>
-          Luxury cinematic documentary edit with premium storytelling.
-        </p>
+        <div class="project-content">
+
+          <span>Luxury Documentary</span>
+
+          <h3>Davin Jatho Documentary</h3>
+
+          <p>
+            Premium cinematic storytelling with luxury aesthetics.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECT 2 -->
+
+      <div class="project-card">
+
+        <video
+          class="project-video"
+          muted
+          loop
+          playsinline
+          onclick="toggleVideo(this)"
+        >
+          <source src="videos/try.mp4" type="video/mp4">
+        </video>
+
+        <div class="project-content">
+
+          <span>Car Edit • VFX</span>
+
+          <h3>Speed Ramp Car Edit</h3>
+
+          <p>
+            Fast-paced cinematic car edit with aggressive transitions.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECT 3 -->
+
+      <div class="project-card">
+
+        <video
+          class="project-video"
+          muted
+          loop
+          playsinline
+          onclick="toggleVideo(this)"
+        >
+          <source src="videos/vk.mp4" type="video/mp4">
+        </video>
+
+        <div class="project-content">
+
+          <span>Social Media Reel</span>
+
+          <h3>Agency Promotion Reel</h3>
+
+          <p>
+            High-retention reel edit optimized for engagement.
+          </p>
+
+        </div>
+
       </div>
 
     </div>
 
-    <!-- Project 2 -->
-    <div class="project-card">
+  </section>
 
-      <video
-        class="project-video"
-        muted
-        loop
-        playsinline
-        poster="https://picsum.photos/500/700?2"
-        onclick="toggleVideo(this)"
-      >
-        <source src="videos/try.mp4" type="video/mp4">
-      </video>
+  <!-- CONTACT POPUP -->
 
-      <div class="project-content">
-        <span>Car Edit • VFX</span>
+  <div id="contactPopup" class="popup">
 
-        <h3>Speed Ramp Car Edit</h3>
+    <div class="popup-content">
 
-        <p>
-          High-energy cinematic car edit with transitions.
-        </p>
-      </div>
+      <span class="close-btn" onclick="closePopup()">
+        ×
+      </span>
 
-    </div>
+      <h2>Contact Me</h2>
 
-    <!-- Project 3 -->
-    <div class="project-card">
+      <p>Instagram: @wannabe.4shhu</p>
 
-      <video
-        class="project-video"
-        muted
-        loop
-        playsinline
-        poster="https://picsum.photos/500/700?3"
-        onclick="toggleVideo(this)"
-      >
-        <source src="videos/vk.mp4" type="video/mp4">
-      </video>
+      <p>Email: anshsj64@gmail.com</p>
 
-      <div class="project-content">
-        <span>Social Media Reel</span>
-
-        <h3>Agency Promotion Reel</h3>
-
-        <p>
-          Retention-focused reel optimized for engagement.
-        </p>
-      </div>
+      <p>Phone: 9682005542</p>
 
     </div>
 
   </div>
 
-</section>
+  <!-- FOOTER -->
 
-<script>
-function toggleVideo(video) {
-
-  const allVideos = document.querySelectorAll(".project-video");
-
-  allVideos.forEach((v) => {
-    if (v !== video) {
-      v.pause();
-    }
-  });
-
-  if (video.paused) {
-    video.play();
-  } else {
-    video.pause();
-  }
-}
-</script>
-
-  <!-- Footer -->
   <footer>
+
     <p>Cinematic Portfolio Experience</p>
+
     <p>© 2026 Ansh Visuals</p>
+
   </footer>
 
-  <script src="script.js"></script>
+  <!-- SCRIPT -->
+
+  <script>
+
+    function toggleVideo(video) {
+
+      const allVideos = document.querySelectorAll(".project-video");
+
+      allVideos.forEach((v) => {
+        if (v !== video) {
+          v.pause();
+        }
+      });
+
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    function openPopup() {
+      document.getElementById("contactPopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("contactPopup").style.display = "none";
+    }
+
+  </script>
+
 </body>
+
 </html>
+```

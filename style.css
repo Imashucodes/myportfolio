@@ -482,6 +482,10 @@ footer p {
   body::before, body::after { width: 70vw; height: 70vw; } /* Scales ambient colors for tablets */
 }
 
+@media (max-width: 768px) {
+  .nav-links a { display: none; }
+  .hero h1 { font-size: 3rem; }
+}
 
 @media (max-width: 768px) {
   .nav-links a { 

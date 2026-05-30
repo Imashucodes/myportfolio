@@ -487,35 +487,62 @@ footer p {
   .hero h1 { font-size: 3rem; }
 }
 
+/* ==========================================================================
+   9. ABSOLUTE MOBILE FIX (FORCED HEIGHTS & LAYOUTS)
+   ========================================================================== */
+@media (max-width: 992px) {
+  section { padding: 80px 6%; }
+  .navbar { padding: 20px 6%; }
+  .about { grid-template-columns: 1fr; gap: 48px; }
+  body::before, body::after { width: 70vw; height: 70vw; }
+}
+
 @media (max-width: 768px) {
-  .nav-links a { 
-    display: none; 
-  }
+  /* Hide standard text nav links to keep the top bar clean */
+  .nav-links a { display: none !important; }
   
-  .hero h1 { 
-    font-size: 3rem; 
+  /* Shrink oversized hero title text */
+  .hero h1 { font-size: 2.6rem !important; }
+
+  /* 1. FORCE GRID TRACKS TO BE SHORT */
+  .project-grid {
+    grid-template-columns: 1fr !important; /* Forces cards into a neat single column stack */
+    gap: 24px !important;                 /* Reduces large gaps on mobile */
   }
 
-  /* ==========================================================================
-     MOBILE PROJECTS HEIGHT CONTROLS
-     ========================================================================== */
-  .project-video {
-    /* OPTION A: Change aspect ratio for mobile (9/16 for vertical reels, or 4/3 for taller boxes) */
-    aspect-ratio: 16 / 9; 
-    
-    /* OPTION B: Force a specific maximum height if they look too large on mobile screen sizes */
-    max-height: 1080px; 
-    
-    object-fit: cover; /* Keeps footage from looking dumb/stretched */
-  }
-  
+  /* 2. HARD LOCK THE PROJECT CARD OVERALL HEIGHT */
   .project-card {
-    /* Optional: Reduces spacing inside the card on small screens */
-    margin-bottom: 12px; 
+    height: auto !important;             /* Let content resolve gracefully */
+    max-height: 480px !important;        /* HARD LIMIT: Stops the whole card from looking giant */
+    overflow: hidden !important;
   }
-  
+
+  /* 3. HARD LOCK THE VIDEO HEIGHT (Change these values to match your exact taste!) */
+  .project-video {
+    /* 👇 THIS IS EXACTLY WHAT YOU NEED TO TWEAK 👇 */
+    height: 180px !important;            /* FORCED SPECIFIC HEIGHT: Instantly forces video to shrink */
+    aspect-ratio: auto !important;        /* Clears the standard widescreen lock */
+    object-fit: cover !important;         /* Essential: keeps cinematic framing completely perfect */
+  }
+
+  /* 4. SHRINK INTERNAL TEXT PADDING */
   .project-info {
-    /* Compact padding for phone screens so text fits cleanly */
-    padding: 20px; 
+    padding: 20px !important;            /* Tightens the space around headings/descriptions */
+  }
+
+  .project-info h3 {
+    font-size: 1.15rem !important;       /* Makes project headers look clean on small screens */
+    margin-bottom: 6px !important;
+  }
+
+  .project-info p {
+    font-size: 0.85rem !important;       /* Shrinks description paragraph text sizes */
+    line-height: 1.4 !important;
+    
+    /* Line clamping: Hard limits mobile text to 2 lines so descriptions don't push heights down */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
   }
 }

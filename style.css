@@ -11,7 +11,7 @@
 
 :root {
   --bg-dark: #050507;
-  --bg-card: rgba(17, 17, 19, 0.65); /* Made slightly translucent to let background blur pop through */
+  --bg-card: rgba(17, 17, 19, 0.65);
   --bg-card-hover: rgba(26, 26, 30, 0.8);
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
@@ -40,22 +40,19 @@ body::after {
   width: 50vw;
   height: 50vw;
   border-radius: 50%;
-  /* High-end cinematic luxury colors (deep purple and faint slate grey-blue) */
   background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(147, 51, 234, 0.08) 30%, rgba(0,0,0,0) 70%);
   filter: blur(120px);
-  z-index: -1; /* Keeps it strictly behind all text, images, and clips */
+  z-index: -1;
   pointer-events: none;
   mix-blend-mode: screen;
 }
 
-/* Orb 1 Motion Configuration */
 body::before {
   top: -10%;
   left: -10%;
   animation: ambientMoveOne 25s infinite alternate ease-in-out;
 }
 
-/* Orb 2 Motion Configuration */
 body::after {
   bottom: -10%;
   right: -10%;
@@ -63,7 +60,6 @@ body::after {
   animation: ambientMoveTwo 30s infinite alternate ease-in-out;
 }
 
-/* Smooth Hardware-Accelerated Floating Fluid Animations */
 @keyframes ambientMoveOne {
   0% { transform: translate(0px, 0px) scale(1); }
   50% { transform: translate(15vw, 10vh) scale(1.2); }
@@ -76,7 +72,7 @@ body::after {
   100% { transform: translate(-20vw, 5vh) scale(1.15); }
 }
 
-/* Global Content Structural Utilities */
+/* Global Structural Layout */
 section {
   width: 100%;
   padding: 140px 8%;
@@ -85,7 +81,7 @@ section {
   box-sizing: border-box;
   border-bottom: 1px solid var(--border-color);
   position: relative;
-  z-index: 2; /* Ensures content sits safely over background shadows */
+  z-index: 2;
 }
 
 .section-tag {
@@ -178,7 +174,6 @@ h2 {
   align-items: center;
 }
 
-/* Third stationary lighting filter behind hero text */
 .hero-gradient {
   position: absolute;
   top: -10%;
@@ -279,19 +274,19 @@ h2 {
 }
 
 /* ==========================================================================
-   5. PROJECTS GRID & CINEMA VIDEO OPTIMIZATION
+   5. DESKTOP PROJECTS GRID (PERFECT CINEMA SPECIFICATIONS)
    ========================================================================== */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(3, 1fr); /* Hard-locked to a beautiful 3-column desktop view */
+  gap: 32px;
   width: 100%;
 }
 
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px); /* Gives glass-like definition over the background orbs */
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 6px;
   overflow: hidden;
@@ -309,7 +304,7 @@ h2 {
 
 .project-video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 9; /* Perfect widescreen standard for monitors */
   object-fit: cover;
   object-position: center;
   background-color: #000000;
@@ -459,7 +454,7 @@ h2 {
 }
 
 /* ==========================================================================
-   8. FOOTER & MEDIA RESPONSIVENESS
+   8. FOOTER
    ========================================================================== */
 footer {
   width: 100%;
@@ -475,71 +470,47 @@ footer p {
   letter-spacing: 0.05em;
 }
 
+/* ==========================================================================
+   9. ISOLATED MOBILE MEDIA QUERIES (Stays away from Desktop Rules)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr); /* Shifts smoothly to 2 columns on small laptops/tablets */
+  }
+}
+
 @media (max-width: 992px) {
   section { padding: 100px 6%; }
-  .navbar { padding: 20px 6%; }
-  .about { grid-template-columns: 1fr; gap: 48px; }
-  body::before, body::after { width: 70vw; height: 70vw; } /* Scales ambient colors for tablets */
-}
-
-@media (max-width: 768px) {
-  .nav-links a { display: none; }
-  .hero h1 { font-size: 3rem; }
-}
-
-/* ==========================================================================
-   9. ABSOLUTE MOBILE FIX (FORCED HEIGHTS & LAYOUTS)
-   ========================================================================== */
-@media (max-width: 992px) {
-  section { padding: 80px 6%; }
   .navbar { padding: 20px 6%; }
   .about { grid-template-columns: 1fr; gap: 48px; }
   body::before, body::after { width: 70vw; height: 70vw; }
 }
 
 @media (max-width: 768px) {
-  /* Hide standard text nav links to keep the top bar clean */
   .nav-links a { display: none !important; }
-  
-  /* Shrink oversized hero title text */
-  .hero h1 { font-size: 2.6rem !important; }
+  .hero h1 { font-size: 3rem; }
 
-  /* 1. FORCE GRID TRACKS TO BE SHORT */
+  /* HARD FORCED MOBILE CARD STYLING */
   .project-grid {
-    grid-template-columns: 1fr !important; /* Forces cards into a neat single column stack */
-    gap: 24px !important;                 /* Reduces large gaps on mobile */
+    grid-template-columns: 1fr !important; /* Stack single column on phones */
+    gap: 24px !important;
   }
 
-  /* 2. HARD LOCK THE PROJECT CARD OVERALL HEIGHT */
   .project-card {
-    height: auto !important;             /* Let content resolve gracefully */
-    max-height: 480px !important;        /* HARD LIMIT: Stops the whole card from looking giant */
-    overflow: hidden !important;
+    max-height: 460px !important;
   }
 
-  /* 3. HARD LOCK THE VIDEO HEIGHT (Change these values to match your exact taste!) */
   .project-video {
-    /* 👇 THIS IS EXACTLY WHAT YOU NEED TO TWEAK 👇 */
-    height: 1080px !important;            /* FORCED SPECIFIC HEIGHT: Instantly forces video to shrink */
-    aspect-ratio: auto !important;        /* Clears the standard widescreen lock */
-    object-fit: cover !important;         /* Essential: keeps cinematic framing completely perfect */
+    height: 180px !important; /* Adjust this number to make mobile video taller or shorter */
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
   }
 
-  /* 4. SHRINK INTERNAL TEXT PADDING */
   .project-info {
-    padding: 20px !important;            /* Tightens the space around headings/descriptions */
-  }
-
-  .project-info h3 {
-    font-size: 1.15rem !important;       /* Makes project headers look clean on small screens */
-    margin-bottom: 6px !important;
+    padding: 24px !important;
   }
 
   .project-info p {
-    font-size: 0.85rem !important;       /* Shrinks description paragraph text sizes */
-    line-height: 1.4 !important;
-    
-    /* Line clamping: Hard limits mobile text to 2 lines so descriptions don't push heights down */
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;

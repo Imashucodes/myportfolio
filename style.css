@@ -274,12 +274,13 @@ h2 {
 }
 
 /* ==========================================================================
-   5. PROJECTS GRID & IMPROVED PROPORTIONAL VIDEO SIZING
+   5. PREMIUM 3-COLUMN REEL GRID (STRICT 9:16 VERTICAL ASPECT RATIO)
    ========================================================================== */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 40px;
+  /* FORCES all 3 reels to stand side-by-side on desktop views */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 32px;
   width: 100%;
 }
 
@@ -288,30 +289,34 @@ h2 {
   border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 6px;
+  border-radius: 14px; /* Mimics clean smartphone bezel edges */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: var(--transition-premium);
   position: relative;
+  
+  /* Restricts desktop width so vertical videos don't balloon excessively down the page */
+  max-width: 340px; 
+  margin: 0 auto;
+  width: 100%;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   background: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
-/* Premium Dynamic Interactive Badge Overlay */
+/* Luxury Interactive Hover Overlay Badge calibrated for a tall viewport profile */
 .project-card::before {
-  content: "CLICK TO VIEW";
+  content: "TAP TO PLAY";
   position: absolute;
-  /* Centered perfectly over the enlarged video content window frame boundary */
-  top: 220px; 
+  top: 40%; /* Position centered perfectly within the tall 9:16 frame space */
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
-  padding: 10px 20px;
+  padding: 10px 22px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
@@ -332,11 +337,11 @@ h2 {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* FIXED PROPER HEIGHT FRAME: Displays your clips optimally without squishing */
+/* The Fixed Vertical Reel Container */
 .project-video {
   width: 100%;
-  height: 440px !important;    /* Expanded spatial depth window for cinematic immersion */
-  aspect-ratio: auto !important; /* Clears old rigid locks so video rendering loads naturally */
+  /* CRUCIAL FIX: Forfully locks video player bounds to 1080x1920 (9:16 smartphone aspect geometry) */
+  aspect-ratio: 9 / 16 !important; 
   object-fit: cover;
   object-position: center;
   background-color: #000000;
@@ -347,37 +352,36 @@ h2 {
 }
 
 .project-card:hover .project-video {
-  transform: scale(1.03);
-  filter: brightness(0.75) contrast(1.02);
+  transform: scale(1.02);
+  filter: brightness(0.7) contrast(1.03);
 }
 
 .project-info {
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,5,7,0.4) 100%);
 }
 
 .project-info span {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .project-info h3 {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   letter-spacing: -0.01em;
 }
 
 .project-info p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
@@ -488,7 +492,7 @@ h2 {
 }
 
 /* ==========================================================================
-   8. FOOTER & MEDIA RESPONSIVENESS
+   8. FOOTER & CLEAN MEDIA ADAPTABILITY
    ========================================================================== */
 footer {
   width: 100%;
@@ -504,6 +508,13 @@ footer p {
   letter-spacing: 0.05em;
 }
 
+/* Clean breakpoints for vertical formats */
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr); /* Shifts smoothly to 2 columns on tablets */
+  }
+}
+
 @media (max-width: 992px) {
   section { padding: 100px 6%; }
   .navbar { padding: 20px 6%; }
@@ -511,488 +522,22 @@ footer p {
   body::before, body::after { width: 70vw; height: 70vw; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .nav-links a { display: none; }
-  .hero h1 { font-size: 3rem; }
+  .hero h1 { font-size: 2.8rem; }
   
   .project-card::before { display: none !important; }
 
-  /* Smooth scaling for phone screens */
-  .project-video {
-    height: 240px !important; /* Elegant mobile framing height */
+  .project-grid {
+    grid-template-columns: 1fr !important; /* Stacks vertically on phone screens */
+    gap: 32px !important;
   }
-}/* ==========================================================================
-   1. GLOBAL RESET & DESIGN TOKENS
-   ========================================================================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
 
-:root {
-  --bg-dark: #050507;
-  --bg-card: rgba(17, 17, 19, 0.65);
-  --bg-card-hover: rgba(26, 26, 30, 0.8);
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --border-color: rgba(255, 255, 255, 0.05);
-  --transition-premium: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
+  .project-card {
+    max-width: 320px; /* Uniform clean display on device hand-off */
+  }
 
-html, body {
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  position: relative;
+  .project-video {
+    aspect-ratio: 9 / 16 !important;
+  }
 }
-
-/* ==========================================================================
-   PREMIUM BLURRY MOTION BACKGROUND EFFECTS
-   ========================================================================== */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  width: 50vw;
-  height: 50vw;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(147, 51, 234, 0.08) 30%, rgba(0,0,0,0) 70%);
-  filter: blur(120px);
-  z-index: -1;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-body::before {
-  top: -10%;
-  left: -10%;
-  animation: ambientMoveOne 25s infinite alternate ease-in-out;
-}
-
-body::after {
-  bottom: -10%;
-  right: -10%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(99, 102, 241, 0.05) 40%, rgba(0,0,0,0) 70%);
-  animation: ambientMoveTwo 30s infinite alternate ease-in-out;
-}
-
-@keyframes ambientMoveOne {
-  0% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(15vw, 10vh) scale(1.2); }
-  100% { transform: translate(5vw, 20vh) scale(0.9); }
-}
-
-@keyframes ambientMoveTwo {
-  0% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(-10vw, -15vh) scale(0.85); }
-  100% { transform: translate(-20vw, 5vh) scale(1.15); }
-}
-
-/* Global Content Structural Utilities */
-section {
-  width: 100%;
-  padding: 140px 8%;
-  max-width: 1400px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  border-bottom: 1px solid var(--border-color);
-  position: relative;
-  z-index: 2;
-}
-
-.section-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: block;
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 2.7rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-/* ==========================================================================
-   2. FIXED NAVIGATION BAR
-   ========================================================================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 8%;
-  background: rgba(7, 7, 8, 0.6);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  z-index: 1000;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.logo {
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: 0.25em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.nav-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: var(--transition-premium);
-}
-
-.nav-links a:hover {
-  color: var(--text-primary);
-}
-
-.nav-links button {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-primary);
-  padding: 10px 24px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: var(--transition-premium);
-}
-
-.nav-links button:hover {
-  background: var(--text-primary);
-  color: var(--bg-dark);
-  border-color: var(--text-primary);
-}
-
-/* ==========================================================================
-   3. HERO DISPLAY
-   ========================================================================== */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.hero-gradient {
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 55vw;
-  height: 55vw;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 70%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-}
-
-.hero-tag {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-}
-
-.hero h1 {
-  font-size: clamp(3rem, 6.5vw, 4.8rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  margin-bottom: 28px;
-}
-
-.hero-desc {
-  font-size: 1.15rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  margin-bottom: 44px;
-  max-width: 580px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-}
-
-.primary-btn, .secondary-btn {
-  padding: 16px 32px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 2px;
-  transition: var(--transition-premium);
-}
-
-.primary-btn {
-  background: var(--text-primary);
-  color: var(--bg-dark);
-  border: 1px solid var(--text-primary);
-}
-
-.primary-btn:hover {
-  background: transparent;
-  color: var(--text-primary);
-}
-
-.secondary-btn {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* ==========================================================================
-   4. ABOUT SECTION
-   ========================================================================== */
-.about {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.about-right {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.about-right p {
-  font-size: 1.1rem;
-  line-height: 1.75;
-  color: var(--text-secondary);
-}
-
-/* ==========================================================================
-   5. PROJECTS GRID & PREMIUM HOVER CONFIGURATION
-   ========================================================================== */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1080px, 1fr));
-  gap: 40px;
-  width: 100%;
-   height: 100%
-}
-
-.project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition-premium);
-  position: relative;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  background: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Container to handle luxury video hover overlays */
-.project-card::before {
-  content: "CLICK TO VIEW";
-  position: absolute;
-  top: calc(50% - 70px); /* Centers badge exactly over the 16:9 frame boundary */
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--text-primary);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  border-radius: 40px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-  transition: var(--transition-premium);
-}
-
-/* Triggers text container indicator reveal upon layout hover */
-.project-card:hover::before {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.project-video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: center;
-  background-color: #000000;
-  cursor: pointer;
-  border-bottom: 1px solid var(--border-color);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, opacity 0.4s ease;
-  z-index: 1;
-}
-
-/* Cinematic film focus change adjustment when cursor touches elements */
-.project-card:hover .project-video {
-  transform: scale(1.04);
-  filter: brightness(0.7) contrast(1.05);
-}
-
-.project-info {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,5,7,0.4) 100%);
-}
-
-.project-info span {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
-
-.project-info h3 {
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  letter-spacing: -0.01em;
-}
-
-.project-info p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-/* ==========================================================================
-   6. SERVICES
-   ========================================================================== */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-}
-
-.service-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color);
-  padding: 48px;
-  border-radius: 6px;
-  transition: var(--transition-premium);
-}
-
-.service-card:hover {
-  background: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-4px);
-}
-
-.service-card h3 {
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.service-card p {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-/* ==========================================================================
-   7. MODAL OVERLAY (Contact Popup)
-   ========================================================================== */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(4, 4, 6, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  padding: 24px;
-}
-
-.popup-content {
-  background: #111113;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 56px 40px;
-  border-radius: 6px;
-  max-width: 450px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-  animation: modalReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes modalReveal {
-  from { transform: translateY(24px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: var(--transition-premium);
-}
-
-.close-btn:hover {
-  color: var(--text-primary);
-}
-
-.popup-content h2 {
-  font-size: 1.85rem;
-  margin-bottom: 36px;
